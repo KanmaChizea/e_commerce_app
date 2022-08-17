@@ -1,15 +1,16 @@
 import 'package:dartz/dartz.dart';
+import 'package:e_commerce_app/auth/data/model/app_user.dart';
+import 'package:e_commerce_app/auth/data/model/login_info.dart';
+import 'package:e_commerce_app/auth/data/model/register_info.dart';
+import 'package:e_commerce_app/auth/data/repository/auth_repository.dart';
+import 'package:e_commerce_app/auth/data/source/auth_service.dart';
 import 'package:e_commerce_app/core/error/failures.dart';
-import 'package:e_commerce_app/data/auth/model/app_user.dart';
-import 'package:e_commerce_app/data/auth/model/login_info.dart';
-import 'package:e_commerce_app/data/auth/model/register_info.dart';
-import 'package:e_commerce_app/data/auth/repository/auth_repository.dart';
-import 'package:e_commerce_app/data/auth/source/auth_service.dart';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 
-class MockAuthService extends Mock implements AuthService {}
+class MockAuthService extends Mock implements IAuthService {}
 
 class FakeUser extends Fake implements User {
   @override
@@ -27,7 +28,7 @@ void main() {
 
   setUp(() {
     mockAuthService = MockAuthService();
-    sut = AuthRepository(mockAuthService);
+    sut = AuthRepository(authService: mockAuthService);
     user = FakeUser();
   });
 

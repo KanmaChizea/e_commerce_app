@@ -1,16 +1,16 @@
 import 'dart:convert';
 
-class RegisterInfo {
-  final String email;
-  final String password;
+import '../../domain/entities/auth_info.dart';
+
+class RegisterInfo extends AuthInfo {
   final String firstName;
   final String lastName;
   RegisterInfo({
-    required this.email,
-    required this.password,
+    required String email,
+    required String password,
     required this.firstName,
     required this.lastName,
-  });
+  }) : super(email: email, password: password);
 
   Map<String, dynamic> toMap() {
     return {

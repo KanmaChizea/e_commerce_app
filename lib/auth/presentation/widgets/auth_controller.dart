@@ -34,7 +34,7 @@ class AuthScreenController extends StatelessWidget {
                           const SizedBox(height: 16),
                           Text('Error!',
                               style: Theme.of(context).textTheme.bodyText1),
-                          const SizedBox(height: 16),
+                          const SizedBox(height: 8),
                           Text(state.failure!.message,
                               style: Theme.of(context)
                                   .textTheme

@@ -1,13 +1,13 @@
+import '../auth/presentation/screens/login_screen.dart';
+import '../auth/presentation/screens/register_screen.dart';
+import '../home/presentation/home_screen.dart';
 import 'widgets/bloc_providers.dart';
-import '../presentation/auth/screens/login_screen.dart';
-import 'package:flutter/material.dart';
 
-import '../presentation/auth/screens/register_screen.dart';
-import '../presentation/home/screens/home_screen.dart';
+import 'package:flutter/material.dart';
 
 class Routes {
   static Route<dynamic> generateRoute(RouteSettings settings) {
-    //final arguments = settings.arguments;
+    // final arguments = settings.arguments;
     switch (settings.name) {
       case '/':
         return MaterialPageRoute(

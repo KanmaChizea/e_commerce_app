@@ -69,7 +69,8 @@ class AuthScreenLayout extends StatelessWidget {
                     topRight: Radius.circular(20),
                   )),
               child: ListView(
-                  //crossAxisAlignment: CrossAxisAlignment.start,
+                  keyboardDismissBehavior:
+                      ScrollViewKeyboardDismissBehavior.onDrag,
                   children: [
                     Text(header,
                         style: Theme.of(context)

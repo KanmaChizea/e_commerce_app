@@ -1,21 +1,40 @@
 import 'package:dartz/dartz.dart';
-import 'package:e_commerce_app/data/auth/model/app_user.dart';
-import 'package:e_commerce_app/data/auth/model/login_info.dart';
-import 'package:e_commerce_app/data/auth/model/register_info.dart';
-import 'package:e_commerce_app/data/auth/repository/auth_repository.dart';
-import 'package:e_commerce_app/presentation/auth/bloc/auth_bloc.dart';
+import 'package:e_commerce_app/auth/data/model/app_user.dart';
+import 'package:e_commerce_app/auth/data/model/login_info.dart';
+import 'package:e_commerce_app/auth/data/model/register_info.dart';
+import 'package:e_commerce_app/auth/domain/usecase/auth_status.dart';
+import 'package:e_commerce_app/auth/domain/usecase/register.dart';
+import 'package:e_commerce_app/auth/domain/usecase/sign_in.dart';
+import 'package:e_commerce_app/auth/domain/usecase/sign_out.dart';
+import 'package:e_commerce_app/auth/presentation/bloc/auth_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 
-class MockAuthRepository extends Mock implements AuthRepository {}
+class MockUserSignIn extends Mock implements UserSignIn {}
+
+class MockUserSignOut extends Mock implements UserSignOut {}
+
+class MockUserRegister extends Mock implements UserRegister {}
+
+class MockUserAuthStatus extends Mock implements UserAuthStatus {}
 
 void main() {
   late AuthBloc sut;
-  late MockAuthRepository mockAuthRepository;
+  late MockUserRegister mockUserRegister;
+  late MockUserSignIn mockUserSignIn;
+  late MockUserSignOut mockUserSignOut;
+  late MockUserAuthStatus mockUserAuthStatus;
 
   setUp(() {
-    mockAuthRepository = MockAuthRepository();
-    sut = AuthBloc(mockAuthRepository);
+    mockUserAuthStatus = MockUserAuthStatus();
+    mockUserRegister = MockUserRegister();
+    mockUserSignIn = MockUserSignIn();
+    mockUserSignOut = MockUserSignOut();
+    sut = AuthBloc(
+        userAuthStatus: mockUserAuthStatus,
+        userRegister: mockUserRegister,
+        userSignIn: mockUserSignIn,
+        userSignOut: mockUserSignOut);
   });
 
   const user = AppUser(
@@ -35,7 +54,7 @@ void main() {
     test(
       "checks login status",
       () async {
-        when(() => mockAuthRepository.fetchUser()).thenAnswer((_) => null);
+        when(() => mockUserAuthStatus.call()).thenAnswer((_) => null);
         sut.add(CheckLoginStatus());
         expect(
             sut.stream, emitsInOrder([const AuthInitial(true, false, false)]));
@@ -45,7 +64,7 @@ void main() {
     test(
       "logs in user and emits auth logged in state",
       () async {
-        when(() => mockAuthRepository.login(loginInfo))
+        when(() => mockUserSignIn.call(loginInfo))
             .thenAnswer((_) async => const Right(user));
         sut.add(AuthLogin(loginInfo));
         expect(
@@ -60,7 +79,7 @@ void main() {
     test(
       "registers user and emits auth logged in state",
       () async {
-        when(() => mockAuthRepository.register(regInfo))
+        when(() => mockUserRegister.call(regInfo))
             .thenAnswer((_) async => const Right(user));
         sut.add(AuthRegister(regInfo));
         expect(

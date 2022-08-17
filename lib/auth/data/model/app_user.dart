@@ -1,17 +1,18 @@
-import 'package:equatable/equatable.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
-class AppUser extends Equatable {
-  final String firstName;
-  final String lastName;
-  final String email;
-  final String avatarURL;
+import '../../domain/entities/app_user.dart';
+
+class AppUser extends UserEntity {
   const AppUser({
-    required this.firstName,
-    required this.lastName,
-    required this.email,
-    required this.avatarURL,
-  });
+    required String firstName,
+    required String lastName,
+    required String email,
+    required String avatarURL,
+  }) : super(
+            firstName: firstName,
+            lastName: lastName,
+            email: email,
+            avatarURL: avatarURL);
 
   AppUser copyWith({
     String? firstName,
@@ -36,7 +37,4 @@ class AppUser extends Equatable {
       avatarURL: user.photoURL ?? '',
     );
   }
-
-  @override
-  List<Object?> get props => [email];
 }
