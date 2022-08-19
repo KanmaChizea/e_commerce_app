@@ -1,3 +1,4 @@
+import 'package:e_commerce_app/home/presentation/bloc/product_bloc.dart';
 import 'package:e_commerce_app/injection_container.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -13,7 +14,7 @@ class AppBlocProviders extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider<AuthBloc>(
-            create: (_) => sl<AuthBloc>()..add(CheckLoginStatus()))
+            create: (_) => sl<AuthBloc>()..add(CheckLoginStatus())),
       ],
       child: const AuthScreenController(),
     );

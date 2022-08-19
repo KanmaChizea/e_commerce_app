@@ -6,3 +6,5 @@ class AuthFailedException implements Exception {
     required this.message,
   });
 }
+
+class ServerException implements Exception {}

@@ -12,6 +12,6 @@ const h5 = TextStyle(fontSize: 16, fontWeight: FontWeight.w500);
 
 const body1 = TextStyle(fontSize: 18);
 
-const body2 = TextStyle(fontSize: 16);
+const body2 = TextStyle(fontSize: 16, height: 1.5);
 
 const caption = TextStyle(fontSize: 14, fontWeight: FontWeight.w300);

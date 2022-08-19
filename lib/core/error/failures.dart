@@ -1,11 +1,21 @@
 import 'package:equatable/equatable.dart';
 
-class Failure extends Equatable {
-  final String code;
+abstract class Failure extends Equatable {
   final String message;
-  Failure(
-    this.code,
-  ) : message = decode(code);
+
+  const Failure(this.message);
+
+  @override
+  List<Object?> get props => [message];
+}
+
+class ServerFailure extends Failure {
+  const ServerFailure() : super('Could not fetch data');
+}
+
+class AuthFailure extends Failure {
+  final String code;
+  AuthFailure({required this.code}) : super(decode(code));
 
   static decode(String code) {
     switch (code) {
@@ -23,7 +33,4 @@ class Failure extends Equatable {
         return 'Something went wrong';
     }
   }
-
-  @override
-  List<Object?> get props => [code];
 }

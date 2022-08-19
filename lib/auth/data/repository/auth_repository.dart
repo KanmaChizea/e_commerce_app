@@ -23,7 +23,7 @@ class AuthRepository implements IAuthRepository {
       final toAppUser = AppUser.fromUser(result!);
       return Right(toAppUser);
     } on AuthFailedException catch (e) {
-      return Left(Failure(e.code));
+      return Left(AuthFailure(code: e.code));
     }
   }
 
@@ -34,7 +34,7 @@ class AuthRepository implements IAuthRepository {
       final toAppUser = AppUser.fromUser(result!);
       return Right(toAppUser);
     } on AuthFailedException catch (e) {
-      return Left(Failure(e.code));
+      return Left(AuthFailure(code: e.code));
     }
   }
 

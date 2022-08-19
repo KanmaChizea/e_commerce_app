@@ -1,13 +1,16 @@
+import 'package:e_commerce_app/home/domain/entities/product_entity.dart';
+import 'package:e_commerce_app/home/presentation/screens/view_product.dart';
+
 import '../auth/presentation/screens/login_screen.dart';
 import '../auth/presentation/screens/register_screen.dart';
-import '../home/presentation/home_screen.dart';
+import '../home/presentation/screens/home_screen.dart';
 import 'widgets/bloc_providers.dart';
 
 import 'package:flutter/material.dart';
 
 class Routes {
   static Route<dynamic> generateRoute(RouteSettings settings) {
-    // final arguments = settings.arguments;
+    final arguments = settings.arguments;
     switch (settings.name) {
       case '/':
         return MaterialPageRoute(
@@ -18,6 +21,10 @@ class Routes {
         return MaterialPageRoute(builder: (context) => const RegisterScreen());
       case 'home':
         return MaterialPageRoute(builder: (context) => const HomeScreen());
+      case 'view product':
+        return MaterialPageRoute(
+            builder: (context) =>
+                ViewProductScreen(product: arguments as Product));
       default:
         return _errorPage();
     }

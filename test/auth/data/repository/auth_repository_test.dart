@@ -98,6 +98,7 @@ void main() {
     test(
       "registers user and returns app user",
       () async {
+        when(() => mockAuthService.fetchUser).thenAnswer((_) => user);
         final result = await arrangeAndActRegistration();
         expect(result, Right(AppUser.fromUser(user)));
       },

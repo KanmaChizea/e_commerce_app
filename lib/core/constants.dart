@@ -11,3 +11,5 @@ inputField(String label) {
       enabledBorder:
           OutlineInputBorder(borderRadius: BorderRadius.circular(20)));
 }
+
+const kPadding = EdgeInsets.fromLTRB(16, 24, 16, 0);
