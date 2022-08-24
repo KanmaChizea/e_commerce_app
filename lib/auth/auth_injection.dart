@@ -1,10 +1,10 @@
-import 'package:e_commerce_app/auth/data/repository/auth_repository.dart';
-import 'package:e_commerce_app/auth/data/source/auth_service.dart';
-import 'package:e_commerce_app/auth/domain/repository/auth_repo_interface.dart';
-import 'package:e_commerce_app/auth/domain/usecase/auth_status.dart';
-import 'package:e_commerce_app/auth/domain/usecase/register.dart';
-import 'package:e_commerce_app/auth/domain/usecase/sign_in.dart';
-import 'package:e_commerce_app/auth/domain/usecase/sign_out.dart';
+import 'data/repository/auth_repository.dart';
+import 'data/source/auth_service.dart';
+import 'domain/repository/auth_repo_interface.dart';
+import 'domain/usecase/auth_status.dart';
+import 'domain/usecase/register.dart';
+import 'domain/usecase/sign_in.dart';
+import 'domain/usecase/sign_out.dart';
 import 'package:get_it/get_it.dart';
 
 import 'presentation/bloc/auth_bloc.dart';

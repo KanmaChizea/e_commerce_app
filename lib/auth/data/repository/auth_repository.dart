@@ -24,6 +24,8 @@ class AuthRepository implements IAuthRepository {
       return Right(toAppUser);
     } on AuthFailedException catch (e) {
       return Left(AuthFailure(code: e.code));
+    } catch (e) {
+      return const Left(UnknownFailure());
     }
   }
 
@@ -35,6 +37,8 @@ class AuthRepository implements IAuthRepository {
       return Right(toAppUser);
     } on AuthFailedException catch (e) {
       return Left(AuthFailure(code: e.code));
+    } catch (e) {
+      return const Left(UnknownFailure());
     }
   }
 

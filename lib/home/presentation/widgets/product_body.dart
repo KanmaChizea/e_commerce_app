@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../core/theme/colors.dart';
 import '../bloc/product_bloc.dart';
-import 'favourite_icon.dart';
+import '../../../saved_products/presentation/widgets/favourite_icon.dart';
 
 class ProductsBody extends StatelessWidget {
   const ProductsBody({
@@ -47,13 +47,18 @@ class ProductsBody extends StatelessWidget {
                                     border:
                                         Border.all(color: kGrey, width: 1.5),
                                     borderRadius: BorderRadius.circular(16)),
-                                child: Image.network(
-                                  product.image,
-                                  fit: BoxFit.scaleDown,
+                                child: Hero(
+                                  tag: product.image,
+                                  child: Image.network(
+                                    product.image,
+                                    fit: BoxFit.scaleDown,
+                                  ),
                                 ),
                               ),
-                              const Positioned(
-                                  right: 12, top: 8, child: FavouriteIcon())
+                              Positioned(
+                                  right: 12,
+                                  top: 8,
+                                  child: FavouriteIcon(id: product.id))
                             ],
                           ),
                           Text(

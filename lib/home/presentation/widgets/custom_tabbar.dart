@@ -1,5 +1,5 @@
-import 'package:e_commerce_app/core/theme/colors.dart';
-import 'package:e_commerce_app/home/presentation/bloc/product_bloc.dart';
+import '../../../core/theme/colors.dart';
+import '../bloc/product_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

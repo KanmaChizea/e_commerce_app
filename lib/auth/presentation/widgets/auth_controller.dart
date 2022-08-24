@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../core/theme/buttons.dart';
 import '../../../core/theme/colors.dart';
-import '../../../home/presentation/bloc/product_bloc.dart';
 import '../bloc/auth_bloc.dart';
 import '../screens/login_screen.dart';
 import '../screens/register_screen.dart';
@@ -19,7 +18,7 @@ class AuthScreenController extends StatelessWidget {
         listener: (context, state) {
           if (state is AuthLoggedIn) {
             Navigator.of(context)
-                .pushNamedAndRemoveUntil('home', (route) => false);
+                .pushNamedAndRemoveUntil('page handler', (route) => false);
           }
           if (state is AuthInitial && state.isError) {
             showDialog(

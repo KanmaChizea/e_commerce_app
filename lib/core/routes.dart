@@ -1,10 +1,11 @@
-import 'package:e_commerce_app/home/domain/entities/product_entity.dart';
-import 'package:e_commerce_app/home/presentation/screens/view_product.dart';
+import 'package:e_commerce_app/core/widgets/page_handler.dart';
+
+import '../auth/presentation/widgets/auth_controller.dart';
+import '../home/domain/entities/product_entity.dart';
+import '../home/presentation/screens/view_product.dart';
 
 import '../auth/presentation/screens/login_screen.dart';
 import '../auth/presentation/screens/register_screen.dart';
-import '../home/presentation/screens/home_screen.dart';
-import 'widgets/bloc_providers.dart';
 
 import 'package:flutter/material.dart';
 
@@ -14,17 +15,17 @@ class Routes {
     switch (settings.name) {
       case '/':
         return MaterialPageRoute(
-            builder: (context) => const AppBlocProviders());
+            builder: (context) => const AuthScreenController());
       case 'login':
         return MaterialPageRoute(builder: (context) => const LoginScreen());
       case 'register':
         return MaterialPageRoute(builder: (context) => const RegisterScreen());
-      case 'home':
-        return MaterialPageRoute(builder: (context) => const HomeScreen());
       case 'view product':
         return MaterialPageRoute(
             builder: (context) =>
                 ViewProductScreen(product: arguments as Product));
+      case 'page handler':
+        return MaterialPageRoute(builder: (context) => const PageHandler());
       default:
         return _errorPage();
     }

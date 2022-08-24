@@ -1,9 +1,13 @@
-import 'package:e_commerce_app/home/data/repository/product_repository.dart';
-import 'package:e_commerce_app/home/data/source/product_source.dart';
-import 'package:e_commerce_app/home/domain/repository/product_repository_interface.dart';
-import 'package:e_commerce_app/home/domain/usecases/all_product_usecase.dart';
-import 'package:e_commerce_app/home/domain/usecases/product_by_category_usecase.dart';
-import 'package:e_commerce_app/home/presentation/bloc/product_bloc.dart';
+import 'package:e_commerce_app/home/data/source/cached_produce_service.dart';
+import 'package:hive_flutter/adapters.dart';
+import 'package:path_provider/path_provider.dart';
+
+import 'data/repository/product_repository.dart';
+import 'data/source/product_source.dart';
+import 'domain/repository/product_repository_interface.dart';
+import 'domain/usecases/all_product_usecase.dart';
+import 'domain/usecases/product_by_category_usecase.dart';
+import 'presentation/bloc/product_bloc.dart';
 import 'package:get_it/get_it.dart';
 
 final _sl = GetIt.instance;
@@ -16,9 +20,14 @@ void init() {
       () => ProductByCategoryUsecase(productRepository: _sl()));
 
   //repo
-  _sl.registerLazySingleton<IProductRepository>(
-      () => ProductRepository(productService: _sl()));
+  _sl.registerLazySingleton<IProductRepository>(() =>
+      ProductRepository(productService: _sl(), cachedProductService: _sl()));
 
   //data source
   _sl.registerLazySingleton<IProductService>(() => ProductService());
+  _sl.registerLazySingleton<ICachedProductService>(
+      () => CachedProductService(_sl()));
+
+  //external
+  _sl.registerLazySingleton<Box>(() => Hive.box('data'));
 }

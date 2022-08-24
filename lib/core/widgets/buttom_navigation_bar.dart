@@ -1,22 +1,21 @@
+import 'package:e_commerce_app/core/widgets/page_handling_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'package:e_commerce_app/core/theme/colors.dart';
+import '../theme/colors.dart';
 
 class ButtomNavBar extends StatelessWidget {
   const ButtomNavBar({
     Key? key,
-    required this.index,
   }) : super(key: key);
-  final int index;
 
   @override
   Widget build(BuildContext context) {
     return BottomNavigationBar(
-        onTap: (_) {
-          if (index == 0) {
-          } else {}
+        onTap: (index) {
+          context.read<PageHandlingCubit>().goto(index);
         },
-        currentIndex: index,
+        currentIndex: context.watch<PageHandlingCubit>().state,
         iconSize: 32,
         selectedItemColor: kPrimary,
         items: const [

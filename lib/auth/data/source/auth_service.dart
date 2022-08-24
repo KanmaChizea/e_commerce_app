@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 import '../../../core/error/exceptions.dart';
@@ -21,6 +22,10 @@ class AuthService implements IAuthService {
           email: registerInfo.email, password: registerInfo.password);
       await user.user?.updateDisplayName(
           '${registerInfo.firstName} ${registerInfo.lastName}');
+      await FirebaseFirestore.instance
+          .collection('saved')
+          .doc(user.user?.uid)
+          .set({'saved': []});
       return user.user;
     } on FirebaseAuthException catch (e) {
       throw AuthFailedException(code: e.code, message: e.message);

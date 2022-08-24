@@ -1,3 +1,4 @@
+import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
 
 abstract class Failure extends Equatable {
@@ -33,4 +34,12 @@ class AuthFailure extends Failure {
         return 'Something went wrong';
     }
   }
+}
+
+class UnknownFailure extends Failure {
+  const UnknownFailure() : super('Something went wrong');
+}
+
+class CacheFailure extends Failure {
+  const CacheFailure() : super('Please connect to the internet and try again');
 }

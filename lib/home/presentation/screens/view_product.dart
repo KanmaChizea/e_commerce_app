@@ -1,12 +1,11 @@
-import 'package:e_commerce_app/core/constants.dart';
-import 'package:e_commerce_app/core/theme/colors.dart';
-import 'package:e_commerce_app/home/presentation/widgets/appbar_container.dart';
-import 'package:e_commerce_app/home/presentation/widgets/favourite_icon.dart';
+import '../../../core/constants.dart';
+import '../../../core/theme/colors.dart';
 import 'package:flutter/material.dart';
-import 'package:e_commerce_app/home/domain/entities/product_entity.dart';
+import '../../domain/entities/product_entity.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
 import '../../../core/theme/buttons.dart';
+import '../../../saved_products/presentation/widgets/favourite_icon.dart';
 
 class ViewProductScreen extends StatelessWidget {
   const ViewProductScreen({
@@ -30,7 +29,10 @@ class ViewProductScreen extends StatelessWidget {
                   SizedBox(
                     width: size.width,
                     height: size.height * 0.4,
-                    child: Image.network(product.image, fit: BoxFit.contain),
+                    child: Hero(
+                        tag: product.image,
+                        child:
+                            Image.network(product.image, fit: BoxFit.contain)),
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -49,7 +51,7 @@ class ViewProductScreen extends StatelessWidget {
                               color: kBlack,
                             )),
                       ),
-                      const FavouriteIcon()
+                      FavouriteIcon(id: product.id),
                     ],
                   )
                 ],

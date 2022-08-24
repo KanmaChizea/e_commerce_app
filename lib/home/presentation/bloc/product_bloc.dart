@@ -1,7 +1,7 @@
-import 'package:bloc/bloc.dart';
-import 'package:e_commerce_app/core/error/failures.dart';
-import 'package:e_commerce_app/home/domain/usecases/all_product_usecase.dart';
-import 'package:e_commerce_app/home/domain/usecases/product_by_category_usecase.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../core/error/failures.dart';
+import '../../domain/usecases/all_product_usecase.dart';
+import '../../domain/usecases/product_by_category_usecase.dart';
 import 'package:equatable/equatable.dart';
 
 import '../../domain/entities/product_entity.dart';

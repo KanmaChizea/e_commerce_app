@@ -1,8 +1,8 @@
 import 'package:dartz/dartz.dart';
-import '../../data/model/login_info.dart';
 
 import '../../../core/error/failures.dart';
 import '../../data/model/app_user.dart';
+import '../../data/model/login_info.dart';
 import '../repository/auth_repo_interface.dart';
 
 class UserSignIn {

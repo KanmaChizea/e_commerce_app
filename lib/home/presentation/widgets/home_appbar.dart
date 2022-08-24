@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
 import '../../../core/theme/colors.dart';
-import 'appbar_container.dart';
+import '../../../core/widgets/cart_icon.dart';
+import '../../../core/widgets/appbar_container.dart';
 
 class HomeAppBar extends StatelessWidget {
   const HomeAppBar({
@@ -26,14 +27,7 @@ class HomeAppBar extends StatelessWidget {
           ],
         ))),
         const SizedBox(width: 16),
-        GestureDetector(
-          child: const AppBarContainer(
-            child: Icon(
-              Icons.shopping_cart_outlined,
-              color: kGrey,
-            ),
-          ),
-        )
+        const CartIcon()
       ],
     );
   }
