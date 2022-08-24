@@ -3,8 +3,6 @@ import 'package:e_commerce_app/home/presentation/bloc/product_bloc.dart';
 import 'package:e_commerce_app/home/presentation/screens/home_screen.dart';
 import 'package:e_commerce_app/saved_products/presentation/screens/saved_items_screen.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class PageHandler extends StatelessWidget {

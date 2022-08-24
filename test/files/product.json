@@ -1,8 +1,0 @@
-{
-    "id":1,
-    "title":"tTitle",
-    "price":10,
-    "description":"tDescription",
-    "category":"tCategory",
-    "image":"tImage",
-    "rating":{"rate":1.0,"count":120}}

@@ -1,11 +1,7 @@
 import '../../../core/constants.dart';
 import '../widgets/custom_tabbar.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../bloc/product_bloc.dart';
-
-import '../../../injection_container.dart';
 import '../../../core/widgets/buttom_navigation_bar.dart';
 import '../widgets/home_appbar.dart';
 import '../widgets/product_body.dart';

@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:developer';
 
 import '../../domain/usecases/add_saved_product_usecase.dart';
 import '../../domain/usecases/clear_all_usecase.dart';
@@ -41,12 +40,6 @@ class SavedProductCubit extends Cubit<List> {
 
   clearAllSavedProduct() async {
     return await _clearAllProductsUsecase.call();
-  }
-
-  @override
-  void onChange(Change<List> change) {
-    log('From : ${change.currentState} \n To: ${change.nextState}');
-    super.onChange(change);
   }
 
   @override
