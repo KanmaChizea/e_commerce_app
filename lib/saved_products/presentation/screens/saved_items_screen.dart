@@ -4,7 +4,7 @@ import 'package:e_commerce_app/saved_products/presentation/cubit/saved_product_c
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../widgets/save_items_appbar.dart';
+import '../../../core/widgets/save_items_appbar.dart';
 import '../widgets/saved_items_body.dart';
 
 class SavedItemsScreen extends StatelessWidget {
@@ -21,7 +21,9 @@ class SavedItemsScreen extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const SavedItemsAppBar(),
+                    const GeneralAppBar(
+                      title: 'Saved Items',
+                    ),
                     const SizedBox(height: 24),
                     if (savedItems.isNotEmpty)
                       TextButton.icon(

@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 
-import '../../../core/theme/colors.dart';
-import '../../../core/widgets/cart_icon.dart';
+import '../theme/colors.dart';
+import 'cart_icon.dart';
 
-class SavedItemsAppBar extends StatelessWidget {
-  const SavedItemsAppBar({
+class GeneralAppBar extends StatelessWidget {
+  final String title;
+  const GeneralAppBar({
     Key? key,
+    required this.title,
   }) : super(key: key);
 
   @override
@@ -14,7 +16,7 @@ class SavedItemsAppBar extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Text(
-          'Saved Items',
+          title,
           style: Theme.of(context).textTheme.headline2?.copyWith(color: kBlack),
         ),
         const CartIcon()

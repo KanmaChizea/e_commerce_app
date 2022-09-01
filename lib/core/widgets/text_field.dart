@@ -1,26 +1,37 @@
 import 'package:flutter/material.dart';
 
-import '../../../core/theme/colors.dart';
+import '../theme/colors.dart';
 
 class InputField extends StatelessWidget {
   const InputField({
     Key? key,
-    required this.controller,
+    this.controller,
     this.validator,
     this.isPassword,
+    this.initialValue,
+    this.onChanged,
+    this.onEditingComplete,
+    this.onFieldSubmitted,
+    this.onSaved,
     required this.label,
   }) : super(key: key);
 
-  final TextEditingController controller;
+  final TextEditingController? controller;
   final String? Function(String?)? validator;
   final bool? isPassword;
   final String label;
+  final String? initialValue;
+  final Function(String?)? onSaved;
+  final Function(String?)? onChanged;
+  final Function(String?)? onFieldSubmitted;
+  final Function()? onEditingComplete;
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
       controller: controller,
       validator: validator,
+      initialValue: initialValue,
       obscureText: isPassword ?? false,
       style: Theme.of(context).textTheme.bodyText2,
       decoration: InputDecoration(
@@ -48,6 +59,10 @@ class InputField extends StatelessWidget {
           floatingLabelBehavior: FloatingLabelBehavior.auto,
           errorStyle:
               Theme.of(context).textTheme.caption?.copyWith(color: kRed)),
+      onChanged: onChanged,
+      onFieldSubmitted: onFieldSubmitted,
+      onSaved: onSaved,
+      onEditingComplete: onEditingComplete,
     );
   }
 }

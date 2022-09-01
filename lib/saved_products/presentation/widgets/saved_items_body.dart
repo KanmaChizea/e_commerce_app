@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:e_commerce_app/saved_products/presentation/widgets/saved_item_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -16,7 +14,6 @@ class SavedItemsBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    log(savedItems.length.toString());
     if (savedItems.isEmpty) {
       return const Expanded(
           child: Center(

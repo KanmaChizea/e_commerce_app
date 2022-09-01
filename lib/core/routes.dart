@@ -1,4 +1,8 @@
 import 'package:e_commerce_app/core/widgets/page_handler.dart';
+import 'package:e_commerce_app/settings/presentation/screen/add_address_screen.dart';
+import 'package:e_commerce_app/settings/presentation/screen/adress_screen.dart';
+import 'package:e_commerce_app/settings/presentation/screen/details_screen.dart';
+import 'package:e_commerce_app/settings/presentation/screen/password_screen.dart';
 
 import '../auth/presentation/widgets/auth_controller.dart';
 import '../home/domain/entities/product_entity.dart';
@@ -26,6 +30,17 @@ class Routes {
                 ViewProductScreen(product: arguments as Product));
       case 'page handler':
         return MaterialPageRoute(builder: (context) => const PageHandler());
+      case 'address':
+        return MaterialPageRoute(builder: (context) => const AddressScreen());
+      case 'details':
+        return MaterialPageRoute(builder: (context) => const DetailsScreen());
+      case 'change password':
+        return MaterialPageRoute(
+            builder: (context) => const ChangePasswordScreen());
+      case 'add address':
+        return MaterialPageRoute(
+            builder: (context) => const AddAddressScreen());
+
       default:
         return _errorPage();
     }

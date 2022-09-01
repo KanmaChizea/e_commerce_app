@@ -26,26 +26,29 @@ class AuthScreenController extends StatelessWidget {
                 barrierDismissible: false,
                 builder: (context) => AlertDialog(
                       content: Container(
-                        width: size.width - 400,
+                        width: size.width - 100,
                         height: size.height / 3,
                         padding: const EdgeInsets.all(8),
-                        child: Column(children: [
-                          const Icon(Icons.error, size: 70, color: kRed),
-                          const SizedBox(height: 16),
-                          Text('Error!',
-                              style: Theme.of(context).textTheme.bodyText1),
-                          const SizedBox(height: 8),
-                          Text(state.failure!.message,
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .bodyText2
-                                  ?.copyWith(color: kGrey)),
-                          const SizedBox(height: 16),
-                          ElevatedButton(
-                              onPressed: () => Navigator.of(context).pop(),
-                              style: fullButton,
-                              child: const Text('Try again'))
-                        ]),
+                        child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              const Icon(Icons.error, size: 70, color: kRed),
+                              const SizedBox(height: 16),
+                              Text('Error!',
+                                  style: Theme.of(context).textTheme.bodyText1),
+                              const SizedBox(height: 8),
+                              Text(state.failure!.message,
+                                  textAlign: TextAlign.center,
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .bodyText2
+                                      ?.copyWith(color: kGrey)),
+                              const SizedBox(height: 16),
+                              ElevatedButton(
+                                  onPressed: () => Navigator.of(context).pop(),
+                                  style: fullButton,
+                                  child: const Text('Try again'))
+                            ]),
                       ),
                     ));
           }

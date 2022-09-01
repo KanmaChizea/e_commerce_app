@@ -1,3 +1,4 @@
+import 'package:e_commerce_app/settings/presentation/bloc/settings_bloc.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -6,12 +7,13 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'auth/presentation/bloc/auth_bloc.dart';
 import 'core/widgets/page_handling_cubit.dart';
 import 'home/presentation/bloc/product_bloc.dart';
-import 'injection_container.dart' as di;
+import 'core/dependency_injection/injection_container.dart' as di;
 import 'core/routes.dart';
 import 'core/theme/theme.dart';
 import 'firebase_options.dart';
-import 'injection_container.dart';
+import 'core/dependency_injection/injection_container.dart';
 import 'saved_products/presentation/cubit/saved_product_cubit.dart';
+import 'settings/presentation/bloc/address_bloc.dart';
 
 void main() async {
   di.init();
@@ -38,7 +40,9 @@ class MyApp extends StatelessWidget {
               create: (_) => sl<ProductBloc>()..add(LoadAllProducts())),
           BlocProvider<SavedProductCubit>(
               create: (_) => sl<SavedProductCubit>()..fetchSavedProducts()),
-          BlocProvider(create: (_) => PageHandlingCubit())
+          BlocProvider(create: (_) => PageHandlingCubit()),
+          BlocProvider(create: (_) => sl<SettingsBloc>()..add(LoadSettings())),
+          BlocProvider(create: (_) => sl<AddressBloc>())
         ],
         child: MaterialApp(
           debugShowCheckedModeBanner: false,

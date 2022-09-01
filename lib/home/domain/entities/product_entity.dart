@@ -65,7 +65,7 @@ class Product extends Equatable {
     };
   }
 
-  factory Product.fromMap(Map<String, dynamic> map) {
+  factory Product.fromMap(Map map) {
     return Product(
       id: map['id']?.toInt() ?? 0,
       title: map['title'] ?? '',

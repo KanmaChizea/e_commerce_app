@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:e_commerce_app/core/widgets/toast.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -28,7 +29,11 @@ class SavedItemCard extends StatelessWidget {
             contentPadding: const EdgeInsets.fromLTRB(16, 8, 16, 0),
             leading: SizedBox(
               width: 50,
-              child: Image.network(savedProducts.image),
+              child: CachedNetworkImage(
+                imageUrl: savedProducts.image,
+                errorWidget: (context, url, error) =>
+                    const Icon(Icons.image_outlined),
+              ),
             ),
             title: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,

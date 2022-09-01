@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -49,8 +50,10 @@ class ProductsBody extends StatelessWidget {
                                     borderRadius: BorderRadius.circular(16)),
                                 child: Hero(
                                   tag: product.image,
-                                  child: Image.network(
-                                    product.image,
+                                  child: CachedNetworkImage(
+                                    imageUrl: product.image,
+                                    errorWidget: (context, url, error) =>
+                                        const Icon(Icons.image_outlined),
                                     fit: BoxFit.scaleDown,
                                   ),
                                 ),

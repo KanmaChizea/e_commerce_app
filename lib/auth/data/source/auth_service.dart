@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
@@ -41,6 +43,7 @@ class AuthService implements IAuthService {
           email: loginInfo.email, password: loginInfo.password);
       return user.user;
     } on FirebaseAuthException catch (e) {
+      log(e.code);
       throw AuthFailedException(code: e.code, message: e.message);
     } catch (e) {
       rethrow;

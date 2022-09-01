@@ -2,8 +2,11 @@ import 'package:e_commerce_app/core/widgets/page_handling_cubit.dart';
 import 'package:e_commerce_app/home/presentation/bloc/product_bloc.dart';
 import 'package:e_commerce_app/home/presentation/screens/home_screen.dart';
 import 'package:e_commerce_app/saved_products/presentation/screens/saved_items_screen.dart';
+import 'package:e_commerce_app/settings/presentation/screen/settings_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../settings/presentation/bloc/settings_bloc.dart';
 
 class PageHandler extends StatelessWidget {
   const PageHandler({Key? key}) : super(key: key);
@@ -18,7 +21,8 @@ class PageHandler extends StatelessWidget {
           context.read<ProductBloc>().add(LoadAllProducts());
           return const SavedItemsScreen();
         case 2:
-          return Container(child: Center(child: Text('Blehhh')));
+          context.read<SettingsBloc>().add(LoadSettings());
+          return const SettingScreen();
       }
       return Container();
     });

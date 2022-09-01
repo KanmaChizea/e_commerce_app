@@ -1,3 +1,5 @@
+import 'package:cached_network_image/cached_network_image.dart';
+
 import '../../../core/constants.dart';
 import '../../../core/theme/colors.dart';
 import 'package:flutter/material.dart';
@@ -31,8 +33,11 @@ class ViewProductScreen extends StatelessWidget {
                     height: size.height * 0.4,
                     child: Hero(
                         tag: product.image,
-                        child:
-                            Image.network(product.image, fit: BoxFit.contain)),
+                        child: CachedNetworkImage(
+                            imageUrl: product.image,
+                            errorWidget: (context, url, error) =>
+                                const Icon(Icons.image_outlined),
+                            fit: BoxFit.contain)),
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,

@@ -27,6 +27,8 @@ class AuthFailure extends Failure {
         return 'Time out. Your session is taking too long';
       case 'user-not-found':
         return 'User does not exist';
+      case 'wrong-password':
+        return 'The password you entered is incorrect';
       case 'invalid-argument':
         return 'The username and/or password you entered is incorrect';
       default:

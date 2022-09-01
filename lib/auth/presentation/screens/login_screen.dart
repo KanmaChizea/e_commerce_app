@@ -6,7 +6,7 @@ import '../../../core/utils/validations.dart';
 import '../../data/model/login_info.dart';
 import '../bloc/auth_bloc.dart';
 import '../widgets/auth_screen_layout.dart';
-import '../widgets/text_field.dart';
+import '../../../core/widgets/text_field.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);

@@ -27,7 +27,10 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
+  cached_network_image: ^3.2.1
   cloud_firestore: ^3.4.5
+  country_state_city_picker: ^1.2.8
+  csc_picker: ^0.2.6
   cupertino_icons: ^1.0.2
   dartz: ^0.10.1
   equatable: ^2.0.3
@@ -43,6 +46,7 @@ dependencies:
   http: ^0.13.5
   internet_connection_checker: ^0.0.1+4
   path_provider: ^2.0.11
+  rxdart: ^0.27.5
 
 dev_dependencies:
   flutter_lints: ^2.0.0

@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:e_commerce_app/home/domain/entities/product_entity.dart';
 import 'package:hive_flutter/adapters.dart';
 
@@ -27,6 +29,7 @@ class CachedProductService implements ICachedProductService {
     try {
       return _box.toMap().values.map((e) => Product.fromMap(e)).toList();
     } catch (e) {
+      log(e.toString());
       throw CacheException();
     }
   }
