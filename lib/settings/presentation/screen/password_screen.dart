@@ -1,4 +1,6 @@
+import 'package:e_commerce_app/settings/presentation/bloc/settings_bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../core/constants.dart';
 import '../../../core/theme/buttons.dart';
@@ -31,7 +33,7 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
     final size = MediaQuery.of(context).size;
     return Scaffold(
       body: SafeArea(
-        child: Padding(
+        child: SingleChildScrollView(
           padding: kPadding,
           child: Column(
             children: [
@@ -50,7 +52,12 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                       controller: newPasswordController, label: 'New password'),
                   const SizedBox(height: 32),
                   ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        context.read<SettingsBloc>().add(ChangePassword(
+                            email: emailController.text,
+                            currentPassword: currentPasswordController.text,
+                            newPassword: newPasswordController.text));
+                      },
                       style: fullButton.copyWith(
                         minimumSize:
                             MaterialStateProperty.all(Size(size.width, 48)),

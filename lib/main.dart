@@ -1,3 +1,4 @@
+import 'package:e_commerce_app/cart/presentation/bloc/cart_bloc.dart';
 import 'package:e_commerce_app/settings/presentation/bloc/settings_bloc.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -42,7 +43,8 @@ class MyApp extends StatelessWidget {
               create: (_) => sl<SavedProductCubit>()..fetchSavedProducts()),
           BlocProvider(create: (_) => PageHandlingCubit()),
           BlocProvider(create: (_) => sl<SettingsBloc>()..add(LoadSettings())),
-          BlocProvider(create: (_) => sl<AddressBloc>())
+          BlocProvider(create: (_) => sl<AddressBloc>()),
+          BlocProvider(create: (_) => sl<CartBloc>())
         ],
         child: MaterialApp(
           debugShowCheckedModeBanner: false,
