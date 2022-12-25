@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -17,6 +19,7 @@ class FavouriteIcon extends StatelessWidget {
       final isSaved = state.contains(id);
       return GestureDetector(
         onTap: () {
+          log("t");
           isSaved
               ? context.read<SavedProductCubit>().deleteSavedProduct(id)
               : context.read<SavedProductCubit>().addSavedProduct(id);

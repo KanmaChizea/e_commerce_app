@@ -1,4 +1,4 @@
-import 'package:bloc/bloc.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:e_commerce_app/cart/domain/entity/cart_entity.dart';
 import 'package:e_commerce_app/cart/domain/usecases/add_usecase.dart';
 import 'package:e_commerce_app/cart/domain/usecases/clear_usecase.dart';

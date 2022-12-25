@@ -3,6 +3,8 @@ import 'package:e_commerce_app/core/widgets/toast.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../cart/data/model/cart_model.dart';
+import '../../../cart/presentation/bloc/cart_bloc.dart';
 import '../../../core/theme/colors.dart';
 import '../../../home/domain/entities/product_entity.dart';
 import '../cubit/saved_product_cubit.dart';
@@ -64,7 +66,12 @@ class SavedItemCard extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.only(right: 12.0),
             child: ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  Cart cart = Cart(product: savedProducts, quantity: 1);
+                  context.read<CartBloc>().add(AddToCart(cart.toEntity()));
+                  ScaffoldMessenger.of(context).showSnackBar(Toast(
+                      label: 'Successfully added to cart', context: context));
+                },
                 child: Text(
                   'Buy now',
                   style: Theme.of(context)

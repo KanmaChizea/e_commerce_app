@@ -8,17 +8,17 @@ import 'package:e_commerce_app/cart/domain/entity/cart_entity.dart';
 import '../../../home/domain/entities/product_entity.dart';
 
 class Cart extends Equatable {
-  final String id;
+  final String? id;
   final Product product;
   final int quantity;
   const Cart({
-    required this.id,
+    this.id,
     required this.product,
     required this.quantity,
   });
 
   @override
-  List<Object> get props => [id, product, quantity];
+  List<Object> get props => [product, quantity];
 
   Map<String, dynamic> toMap() {
     return {
@@ -37,7 +37,7 @@ class Cart extends Equatable {
   }
 
   CartEntity toEntity() =>
-      CartEntity(product: product, quantity: quantity, id: id);
+      CartEntity(product: product, quantity: quantity, id: id ?? '');
 
   @override
   String toString() => 'Cart(id: $id, product: $product, quantity: $quantity)';

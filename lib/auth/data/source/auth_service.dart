@@ -25,6 +25,10 @@ class AuthService implements IAuthService {
       await user.user?.updateDisplayName(
           '${registerInfo.firstName} ${registerInfo.lastName}');
       await FirebaseFirestore.instance
+          .collection('user data')
+          .doc(user.user?.uid)
+          .set({"gender": false, "phone": ""});
+      await FirebaseFirestore.instance
           .collection('saved')
           .doc(user.user?.uid)
           .set({'saved': []});

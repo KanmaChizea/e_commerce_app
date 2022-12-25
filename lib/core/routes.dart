@@ -1,3 +1,4 @@
+import 'package:e_commerce_app/checkout/presentation/screens/complete_screen.dart';
 import 'package:e_commerce_app/core/widgets/page_handler.dart';
 import 'package:e_commerce_app/settings/presentation/screen/add_address_screen.dart';
 import 'package:e_commerce_app/settings/presentation/screen/adress_screen.dart';
@@ -5,6 +6,7 @@ import 'package:e_commerce_app/settings/presentation/screen/details_screen.dart'
 import 'package:e_commerce_app/settings/presentation/screen/password_screen.dart';
 
 import '../auth/presentation/widgets/auth_controller.dart';
+import '../cart/presentation/screen/cart_screen.dart';
 import '../home/domain/entities/product_entity.dart';
 import '../home/presentation/screens/view_product.dart';
 
@@ -40,6 +42,10 @@ class Routes {
       case 'add address':
         return MaterialPageRoute(
             builder: (context) => const AddAddressScreen());
+      case 'cart':
+        return MaterialPageRoute(builder: (context) => const CartScreen());
+      case 'checkout':
+        return MaterialPageRoute(builder: (context) => const CheckoutScreen());
 
       default:
         return _errorPage();

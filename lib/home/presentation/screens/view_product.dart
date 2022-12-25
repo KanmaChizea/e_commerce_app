@@ -1,8 +1,12 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:e_commerce_app/cart/data/model/cart_model.dart';
+import 'package:e_commerce_app/cart/presentation/bloc/cart_bloc.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../core/constants.dart';
 import '../../../core/theme/colors.dart';
 import 'package:flutter/material.dart';
+import '../../../core/widgets/toast.dart';
 import '../../domain/entities/product_entity.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
@@ -116,7 +120,12 @@ class ViewProductScreen extends StatelessWidget {
                   style: Theme.of(context).textTheme.bodyText2),
               const SizedBox(height: 36),
               ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  Cart cart = Cart(product: product, quantity: 1);
+                  context.read<CartBloc>().add(AddToCart(cart.toEntity()));
+                  ScaffoldMessenger.of(context).showSnackBar(Toast(
+                      label: 'Successfully added to cart', context: context));
+                },
                 style: fullButton.copyWith(
                   minimumSize: MaterialStateProperty.all(Size(size.width, 48)),
                 ),
